@@ -13,17 +13,23 @@ public class StreamUtil
    public static long timeOdds(Random generator, int limit, boolean isParallel)
    {
       long result = 0;
-      //TODO: Your work goes here
+      
+      long startTime = System.nanoTime();
 
       //Creates stream of random values from Integer.MIN_VALUE and Integer.MAX_VALUE   
       IntStream oddStream = generator.ints(Integer.MIN_VALUE, Integer.MAX_VALUE);
+      if (isParallel) { oddStream.parallel();} //Checks to see if stream will be run as parallel.
 
       //Make sure stream only has odd numbers in it.
-      result = oddStream
+      long count = oddStream
          .filter(w -> w % 2 != 0)
          .limit(limit)
          .count();
          
+      long endTime = System.nanoTime();
+
+      //Calculate elapsed time.
+      result = endTime - startTime;
          
          
          
