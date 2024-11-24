@@ -18,7 +18,7 @@ public class StreamUtil
 
       //Creates stream of random values from Integer.MIN_VALUE and Integer.MAX_VALUE   
       IntStream oddStream = generator.ints(Integer.MIN_VALUE, Integer.MAX_VALUE);
-      if (isParallel) { oddStream.parallel();} //Checks to see if stream will be run as parallel.
+      if (isParallel) { oddStream = oddStream.parallel();} //Checks to see if stream will be run as parallel.
 
       //Make sure stream only has odd numbers in it.
       long count = oddStream
